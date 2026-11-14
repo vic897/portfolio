@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Space Grotesk", "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-editorial: "Instrument Serif", Georgia, serif;
+  --font-pixel: "Silkscreen", "JetBrains Mono", monospace;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-obsidian: #080808;
+  --color-charcoal: #111111;
+  --color-ink: #F5F5F5;
+  --color-muted: #929292;
+  --color-amber-accent: #E07A42;
+  --color-warm-white: #F3EFEA;
+}
+
+:root {
+  color-scheme: dark;
+  --bg-primary: #080808;
+  --bg-secondary: #111111;
+  --text-primary: #F5F5F5;
+  --text-secondary: #929292;
+  --accent: #E07A42;
+  --accent-soft: rgba(224, 122, 66, 0.16);
+  --hairline: rgba(245, 245, 245, 0.09);
+  --hairline-strong: rgba(245, 245, 245, 0.18);
+}
+
+html {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Custom minimal scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(245, 245, 245, 0.14);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(224, 122, 66, 0.6);
+}
+
+/* Lenis smooth scrolling compatibility */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* Editorial & Technical Typography Helpers */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-editorial {
+  font-family: var(--font-editorial);
+}
+
+.font-pixel {
+  font-family: var(--font-pixel);
+  letter-spacing: 0.04em;
+}
+
+.font-mono-tech {
+  font-family: var(--font-mono);
+}
+
+/* Subtle Glassmorphism */
+.dm-glass {
+  background: rgba(17, 17, 17, 0.56);
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+  border: 1px solid var(--hairline);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.dm-glass-elevated {
+  background: linear-gradient(
+    145deg,
+    rgba(24, 24, 24, 0.78) 0%,
+    rgba(13, 13, 13, 0.82) 100%
+  );
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  border: 1px solid rgba(245, 245, 245, 0.12);
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.09);
+}
+
+.dm-pill {
+  background: rgba(17, 17, 17, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 245, 245, 0.11);
+  transition:
+    border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dm-pill:hover {
+  border-color: rgba(224, 122, 66, 0.45);
+  background: rgba(24, 24, 24, 0.9);
+}
+
+/* Technical Hairline Grids & Dashed Rules (Ref 1 & Ref 2) */
+.dm-tech-grid {
+  background-image:
+    linear-gradient(to right, rgba(245, 245, 245, 0.032) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(245, 245, 245, 0.032) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.dm-dash-b {
+  border-bottom: 1px dashed rgba(245, 245, 245, 0.12);
+}
+
+.dm-dash-t {
+  border-top: 1px dashed rgba(245, 245, 245, 0.12);
+}
+
+/* Subtle Film Grain Texture */
+.dm-film-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 45;
+  opacity: 0.032;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Masked text reveal utility */
+.dm-mask-line {
+  overflow: hidden;
+  display: block;
+}
+
+.dm-mask-inner {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* Custom cursor hiding on fine pointer desktop when custom cursor is active */
+@media (hover: hover) and (pointer: fine) {
+  body.has-custom-cursor,
+  body.has-custom-cursor a,
+  body.has-custom-cursor button {
+    cursor: none !important;
+  }
+}
+
+/* Reduced motion guarantees */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
