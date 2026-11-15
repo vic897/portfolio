@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { createSmoothScroll, ScrollTrigger, SmoothScrollController } from './animations/gsapConfig';
 import { initGlobalScrollChoreography } from './animations/scrollChoreography';
 import { useReducedMotion } from './hooks/useReducedMotion';
@@ -84,6 +85,9 @@ export function App() {
       </main>
 
       <Footer onNavigate={handleNavigate} />
+
+      {/* Vercel Web Analytics */}
+      <Analytics />
     </div>
   );
 }
