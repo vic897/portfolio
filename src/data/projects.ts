@@ -121,7 +121,7 @@ export const PROJECTS: ProjectItem[] = [
     postLinks: [
       {
         label: 'VIEW POST 01',
-        url: 'https://lnkd.in/p/drAQvcn9',
+        url: 'https://lnkd.in/p/deefqD8c',
       },
       {
         label: 'VIEW POST 02',
